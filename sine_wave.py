@@ -43,5 +43,4 @@ def display_single_sine_wave(
     plt.show()
 
 if "__main__" == __name__:
-    display_single_sine_wave(1500, 348, 1.5 * 10**(-9), 0.1)
-    
+    display_single_sine_wave(3000, 348, 1.5 * 10**(-9), 0.1)
