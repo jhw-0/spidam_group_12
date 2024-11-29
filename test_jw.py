@@ -3,7 +3,7 @@ import view
 import controller
 
 if __name__ == '__main__':
-    model = Model()
-    view = View()
-    controller = Controller(model, view)
+    model = model.Model()
+    view = view.TerminalView()
+    controller = controller.Controller(model, view)
     
