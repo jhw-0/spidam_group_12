@@ -10,8 +10,9 @@ class Controller:
         self.model = model
         self.view = view
     
-    def display_file_name(self):
+    def display_file_name(self) -> None:
+        # to do: use regexp (or other pattern matching) to ensure input is path
         self.view.name = self.model.audio_file
     
-    def load_audio_file(self):
-        self.view.file_type
+    def load_audio_file(self) -> None:
+        self.model.set_audio_file(self.view.file_name_input())

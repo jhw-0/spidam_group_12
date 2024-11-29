@@ -19,7 +19,7 @@ class TerminalView(View):
     def file_name_input(self) -> str:
         return input("Please enter your audio file's name.")
     
-    # should include enough information for debugging
+    # this should include enough information for debugging
     def refresh(self, dict):
         for key, value in dict:
             print(f'{key}: {value}')

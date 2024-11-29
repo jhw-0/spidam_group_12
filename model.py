@@ -3,18 +3,20 @@ import pydub
 import pathlib
 
 class Model:
-    def __init__(self, audio_file : str):
-        self.audio_file = pathlib.Path(audio_file).resolve
-        self.file_type = self.audio_file.suffix
+    def __init__(self):
+        self.audio_file = None # pathlib.Path(audio_file).resolve
+        self.file_type = None # self.audio_file.suffix
         self.converted = None
 
+    def set_audio_file(self, audio_file : str):
+        self.audio_file = audio_file
     def get_name(self):
         return self.audio_file.name
     
     def check_wav(self, path : str) -> bool:
         return os.path.splitext(path)[1] == '.wav'
     
-    def audio_file_button(self):
+    def audio_file_button(self) -> str:
         return input('What is the path of your audio file?')
     
     # need to use pathlib.Path object, not string
