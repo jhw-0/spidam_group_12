@@ -11,10 +11,10 @@ class Model:
     # _audio_file_path --------------------------------------------------------
     @property
     def audio_file_path(self) -> pathlib.Path:
-        return self._audio_file
+        return self._audio_file_path
     
     @audio_file_path.setter
-    def audio_file(self, audio_file_path : str) -> None:
+    def audio_file_path(self, audio_file_path : str) -> None:
         # first, sets the property
         self._audio_file_path = pathlib.Path(audio_file_path).resolve()
 
@@ -27,7 +27,7 @@ class Model:
                 print(extension, end=' ')
         # pre-setting the audio_file attribute
         else:
-            self.audio_file()
+            self._load_audio_file()
 
     # -------------------------------------------------------------------------
 
@@ -36,15 +36,17 @@ class Model:
     def audio_file(self) -> pydub.audio_segment.AudioSegment:
         return self._audio_file
     
+    # -------------------------------------------------------------------------
+    
+    # _load_audio_file and helping functions ----------------------------------
     # this is called (preset) by the audio_file_path setter
-    @audio_file.setter
-    def audio_file(self) -> None:
+    def _load_audio_file(self) -> None:
         # setting audio_file
         self._audio_file = pydub.AudioSegment.from_file(
             self._audio_file_path,
-            format='wav'
+            format=self._audio_file_path.suffix[1:] # `[1:]` to remove `.`
         )
-
+        print(f'Successfully loaded the audio_file as {self._audio_file}')
         # below, processing audio_file to be usable
 
         # export to wav conditionally
@@ -56,23 +58,32 @@ class Model:
             self._convert_to_one_channel()
 
     def _check_if_wav(self) -> bool:
-        return self.audio_file.suffix == '.wav'
+        return self.audio_file_path.suffix == '.wav'
     
     def _export_to_wav(self) -> str:
         # resetting the _audio_file attribute
-        self._audio_file = self._audio_file.export(
+        self._audio_file.export(
             # caches the audio file next to the old one on the file sys
-            destination := self.audio_file.with_suffix('.wav'),
+            destination := self.audio_file_path.with_suffix('.wav'),
             format='wav'
         )
+        print(f'Successfully exported the audio_file as {self._audio_file}')
+
+        # resetting the _audio_file_path attribute
+        self._audio_file_path = destination
 
         # resetting the _audio_file attribute
-        self._audio_file_path = destination
+        self._audio_file_path = pydub.AudioSegment.from_file(
+            self._audio_file_path,
+            format='wav'
+        )
 
     def _check_meta(self) -> bool:
         return bool(pydub.utils.mediainfo(str(self._audio_file)).get('TAG'))
     
     def _check_if_one_channel(self) -> bool:
+        print(self._audio_file)
+        print(type(self._audio_file))
         return self._audio_file.channels == 1
 
     def _convert_to_one_channel(self) -> None:
