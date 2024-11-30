@@ -31,6 +31,7 @@ class Model:
 
     # -------------------------------------------------------------------------
 
+
     # _audio_file -------------------------------------------------------------
     @property
     def audio_file(self) -> pydub.audio_segment.AudioSegment:
@@ -38,6 +39,7 @@ class Model:
     
     # -------------------------------------------------------------------------
     
+
     # _load_audio_file and helping functions ----------------------------------
     # this is called (preset) by the audio_file_path setter
     def _load_audio_file(self) -> None:
