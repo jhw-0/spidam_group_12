@@ -46,14 +46,14 @@
 == Limitations
 
 = Agile User Stories
-- *Epic 1*: As a user of the software...
-  - *User story 1*: As a user of the software, I want to be able to analyze my data without writing and understanding Python libraries and code so that I can focus on my job and not on the tools beneath it.
-  - *User story 2*: As a user of the software, I want to be able to use the software intuitively, without needing to look up documentation, so that I can maintain my focus on analyzing the audio data.
-  - *User story 3*: As a user of the software, I want a useful data analysis of my audio files with options built in so that I can get a quick analysis of my data, but have the flexibility to analyze it in many useful ways.
-- *Epic 2*: As a maintainer of the software...
-  - *User story 1*: As a maintainer of the software, I want to be able to come back to my code and understand it so that I don't spend time on-the-job not writing lines of code.
-  - *User story 2*: As a maintainer of the software, I want to be able to hand off tasks and quickly on-board new maintainers so that the software is not totally reliant on me.
-  - *User story 3*: As a maintainer of the software, I want the ability to quickly test, add new features, and reproduce results so that I can focus on adding new features, rather than fixing old problems.
+- *Epic 1*: As a user of SPIDAM, I want a program written for my purposes so that I can remain focused on my expertise.
+  - *User story 1*: As a user of SPIDAM, I want to be able to analyze my data without needing to write nor understand Python libraries and code, so that I can focus on my job and not the tools beneath it.
+  - *User story 2*: As a user of SPIDAM, I want an intuitive user interface, so that I can maintain my focus on analyzing acoustic data rather than experimenting or browsing documentation.
+  - *User story 3*: As a user of SPIDAM, I want a well-tested program, so that a faulty analysis doesn't cause downstream issues.
+- *Epic 2*: As a developer of SPIDAM, I want to focus on development tasks so that I can use my limited time to develop a better product.
+  - *User story 1*: As a developer of SPIDAM, I want to be able to come back to my code and understand it, so that I spend as much time as possible writing code.
+  - *User story 2*: As a developer of SPIDAM, I want to be able to hand off tasks and quickly on-board new maintainers so that the development of SPIDAM can leverage a team effort to get more done.
+  - *User story 3*: As a developer of SPIDAM, I want expressive and robust units of code, so that I have the ability to quickly test, add new features, and reproduce results without spending time rewriting foundational code.
 
 = Results
 
