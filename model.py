@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-import tkinter as tk
-from tkinter import filedialog, ttk
-import wave
-import numpy as np
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-# Model
-class Model:
-    def __init__(self):
-        self.file_path = None
-        self.sample_rate = None
-        self.data = None
-
-    def load_wav(self, file_path):
-        self.file_path = file_path
-        with wave.open(file_path, 'rb') as wav_file:
-            self.sample_rate = wav_file.getframerate()
-            n_frames = wav_file.getnframes()
-            n_channels = wav_file.getnchannels()
-            data = wav_file.readframes(n_frames)
-            self.data = np.frombuffer(data, dtype=np.int16)
-            if n_channels == 2:  # Stereo to mono
-                self.data = self.data[::2]
-=======
 import scipy.signal as signal
 from scipy.fft import fft, fftfreq
 import tkinter as tk
@@ -33,7 +7,7 @@ import numpy as np
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Model
+#Model class
 class Model:
     #Creates model instance
     def __init__(self):
@@ -76,7 +50,7 @@ class Model:
         
         return resonant_frequency
     
-
+    #Isolates a specific band of frequencies, used for isolating between low, med, and high freqs.
     def filter_band(self, low_freq, high_freq):
         nyquist = 0.5 * self.sample_rate  # Nyquist frequency: minimum frequency that a signal can be sampled without error
 
@@ -98,6 +72,7 @@ class Model:
 
         return filtered_signal / max_amplitude
 
+    #Computes RT60 data for each band
     def compute_rt60(self, band_data):
         #Compute the magnitude of the band signal (envelope)
         envelope = np.abs(band_data)
@@ -111,7 +86,7 @@ class Model:
         #Return time and envelope (decay data)
         return time, envelope
     
-    
+    #Subtracts the target RT60 (.5s) from all three band ranges, then finds the average between them
     def compute_rt60_diff(self, rt60_low, rt60_med, rt60_high):
         #Compute RT60 values for each band
         target_rt60 = .5
@@ -122,4 +97,3 @@ class Model:
         diff_high = rt60_high - target_rt60
         
         return (diff_low + diff_med + diff_high) / 3
->>>>>>> a801715 (Created all RT60 graphs)
