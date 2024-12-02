@@ -12,7 +12,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # Main Application
 def main():
     root = tk.Tk()
-    root.title("Waveform Viewer")
+    root.title("Scientific Python Interactive Data Acoustic Modeling")
     root.geometry("800x600")
 
     model = Model()
