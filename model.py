@@ -2,9 +2,13 @@ import scipy.signal as signal
 from scipy.fft import fft, fftfreq
 import wave
 import numpy as np
+from typing import Tuple, Any
+from numpy.typing import NDArray
+
 
 # Model class
 class Model:
+
     def __init__(self):
         self.file_path = None
         self.sample_rate = None
@@ -24,9 +28,9 @@ class Model:
                 self.data = self.data[::2]
     
     # Computes the highest resonant frequency
-    def compute_resonant_frequency(self):
+    def compute_resonant_frequency(self) -> np.float64:
         # Perform FFT to get the frequency spectrum
-        N = len(self.data)
+        N: int = len(self.data)
         # Compute the FFT of the data
         yf = fft(self.data)
         xf = fftfreq(N, 1 / self.sample_rate)
@@ -42,12 +46,11 @@ class Model:
         # Find the frequency with the highest magnitude (peak)
         resonant_frequency_index = np.argmax(magnitude)
         resonant_frequency = xf[resonant_frequency_index]
-        
         return resonant_frequency
     
     # Isolates a specific band of frequencies, used for isolating between low,
     # med, and high freqs.
-    def filter_band(self, low_freq, high_freq):
+    def filter_band(self, low_freq, high_freq) -> NDArray[Any]:
         # Nyquist frequency: minimum frequency that a signal
         # can be sampled without error
         nyquist = 0.5 * self.sample_rate  
@@ -72,7 +75,7 @@ class Model:
         return filtered_signal / max_amplitude
 
     # Computes RT60 data for each band
-    def compute_rt60(self, band_data):
+    def compute_rt60(self, band_data) -> Tuple[NDArray[Any], NDArray[Any]]:
         # Compute the magnitude of the band signal (envelope)
         envelope = np.abs(band_data)
 
