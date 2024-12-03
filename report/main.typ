@@ -176,22 +176,22 @@ From the perspective of designing and developing the SPIDAM platform, limitation
 // Each group member should write a 2-3 paragraph reflection report from each member. What did you learn from this project? What worked well? What was most challenging?
 == Individual Reflection Reports
 
-=== John A. Doe Reflection Report
+=== Chris Lawrence Reflection Report
 // Paragraph 1: What did you learn from this project?
 #chatgpt_go_by()[
-  Working on the SPIDAM project was an enriching experience that deepened my understanding of acoustic modeling and signal processing. I learned how to apply theoretical concepts of reverberation time and frequency analysis using practical tools like Python and its scientific libraries. The process of implementing RT60 calculations and ensuring their accuracy was both challenging and rewarding.
+  As a first time developer of MVC design, using this design allowed me to be more concise and structure my work more appropriately. When adding new features, it became clearer where certain pieces of code should go and updating old code became easier. Other than learning about MVC format, simply having more hands on experience and practice with Python was certainly the most important part of my learning experience. As someone who only uses Python for small assignments or short tasks, using Python for a project such as this allows me to combine all the knowledge I have collected up to this point. Overall, this project was great for improving my effectiveness with Python
 ]
 ...
 
 // Paragraph 2: What worked well?
 #chatgpt_go_by()[
-  One aspect that worked well was our team's collaboration and division of tasks based on our strengths. We maintained clear communication and utilized version control effectively, which streamlined our development process. The integration of different components, such as data analysis and GUI, was smooth due to our adherence to the MVC design pattern.
+  During this project, Jared took over most of the adminstrative task. He developed much of the report, the scrum board, and was the primary leader for the project, while I was primarily involved with the development of the SPIDAM modules. This allowed me to stay focused on one large task, while he was focused on delivering much of the smaller parts of the project while also keeping both of us focused and organized. Other than that, using the model-view-controller format for the coding part of the project worked great, as it kept the code organized and neat
 ]
 ...
 
 // Paragraph 3: What was most challenging?
 #chatgpt_go_by()[
-  The most challenging part was handling the nuances of audio data processing, particularly in dealing with background noise and ensuring the reliability of our RT60 measurements. We had to iterate on our algorithms and refine our data cleaning methods to improve accuracy. Overall, this project enhanced my problem-solving skills and provided valuable experience in applying computational methods to real-world acoustic problems.
+  The most challenging part of the code was completing the model class. This class was composed of all of the actual math and audio manipulations that required previous knowledge of sound and audio sampling to function. While I have actually worked on manipulating audio signals in python for a previous class, this was signficantly more advanced, and required way more research into actually making the code work. Other than the model class, using git commands and Tkinter are still fresh to me and not something commonly used for other coding projects I have done. Due to this, mastering these skills was certainly a task for me
 ]
 ...
 
