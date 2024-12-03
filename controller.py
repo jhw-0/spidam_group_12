@@ -1,10 +1,4 @@
-import model
-import tkinter as tk
-from tkinter import filedialog, ttk
-import wave
-import numpy as np
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from tkinter import filedialog
 
 # Controller
 class Controller:
@@ -14,12 +8,13 @@ class Controller:
         self.view.select_button.config(command=self.select_file)
 
     def select_file(self):
-        #Prompts user to select a file. File type can be .wav, .mp3, .flac, or .ogg
+        # Prompts user to select a file. File type can be
+        # .wav, .mp3, .flac, or .ogg
         file_path = filedialog.askopenfilename(
             title="Select an audio File",
             filetypes=(("Audio Files", "*.wav *.mp3 *.flac *.ogg"), ("All Files", "*.*"))
         )
-        #Executes everything in this if statement once file is selected
+        # Executes everything in this if statement once file is selected
         if file_path:
             self.model.load_wav(file_path)
             time = len(self.model.data) / self.model.sample_rate
@@ -38,7 +33,8 @@ class Controller:
             rt60_diff = self.model.compute_rt60_diff(rt60_low, rt60_mid, rt60_high)
             print(rt60_diff)
 
-            #Updates all necessary information, including time, highest freq., and displays both graphs
+            # Updates all necessary information, including time,
+            # highest freq., and displays both graphs
             self.view.update_time(time)
             self.view.update_resonant_frequency(resonant_frequency)
             self.view.update_rt60_difference(rt60_diff)
