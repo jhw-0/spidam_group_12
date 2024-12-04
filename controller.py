@@ -21,7 +21,8 @@ class Controller:
         )
         # Executes everything in this if statement once file is selected
         if file_path:
-            self.model.load_wav(file_path)
+            self.model.set_file_path(file_path)
+            self.model.load_wav()
             time = len(self.model.data) / self.model.sample_rate
             resonant_frequency = self.model.compute_resonant_frequency()
             # Filter bands

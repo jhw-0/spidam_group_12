@@ -4,28 +4,74 @@ import wave
 import numpy as np
 from typing import Tuple, Any
 from numpy.typing import NDArray
-
+import pydub
+from pathlib import Path
 
 # Model class
 class Model:
 
     def __init__(self):
-        self.file_path = None
-        self.sample_rate = None
-        self.data = None
+        self.file_path: Path | None = None
+        self.audio_file: pydub.AudioSegment | None = None
+        self.sample_rate: int | None = None
+        self.data: NDArray[Any] | None = None
+
+    def set_file_path(self, file_path : str) -> None:
+        self.file_path = Path(file_path) 
+
+    def load_audio_file(self) -> None:
+        # Setting audio_file
+        self.audio_file = pydub.AudioSegment.from_file(
+            self.file_path,
+            format=self.file_path.suffix[1:] # `[1:]` to remove the '.'
+        )
+        # Below, processing audio_file to be usable
+        # Export to wav conditionally
+        if not self.check_if_wav() or self.check_meta():
+            self.export_to_wav()
+        # Convert to one channel audio
+        if not self.check_if_one_channel():
+            self.convert_to_one_channel()
+
+    def check_if_wav(self) -> bool:
+        return self.file_path.suffix == '.wav'
+    
+    def export_to_wav(self) -> str:
+        # resetting the _audio_file attribute
+        self.audio_file.export(
+            # caches the audio file next to the old one on the file sys
+            destination := self.file_path.with_suffix('.wav'),
+            format='wav'
+        )
+        # resetting the file_path attribute
+        self.file_path = destination
+        # resetting the audio_file attribute
+        self.audio_file = pydub.AudioSegment.from_file(
+            self.file_path,
+            format='wav'
+        )
+
+    def check_meta(self) -> bool:
+        return bool(pydub.utils.mediainfo(str(self.audio_file)).get('TAG'))
+    
+    def check_if_one_channel(self) -> bool:
+        print(self.audio_file)
+        print(type(self.audio_file))
+        return self.audio_file.channels == 1
+
+    def convert_to_one_channel(self) -> None:
+        # resetting the _audio_file attribute
+        self.audio_file = self.audio_file.set_channels(1)
 
     # Retrieves vital information about a .wav file, including sample rate,
-    # number of samples, and converts the file to mono from stereo if needed
-    def load_wav(self, file_path):
-        self.file_path = file_path
-        with wave.open(file_path, 'rb') as wav_file:
-            self.sample_rate = wav_file.getframerate()
-            n_frames = wav_file.getnframes()
-            n_channels = wav_file.getnchannels()
-            data = wav_file.readframes(n_frames)
-            self.data = np.frombuffer(data, dtype=np.int16)
-            if n_channels == 2:  # Stereo to mono
-                self.data = self.data[::2]
+    # and number of samples.
+    def load_wav(self) -> None:
+        self.load_audio_file()
+        with wave.open(str(self.file_path), 'rb') as wav_file:
+            self.sample_rate: int = wav_file.getframerate()
+            n_frames: int = wav_file.getnframes()
+            data: bytes = wav_file.readframes(n_frames)
+            self.data: NDArray[Any] = np.frombuffer(data, dtype=np.int16)
     
     # Computes the highest resonant frequency
     def compute_resonant_frequency(self) -> np.float64:
