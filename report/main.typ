@@ -23,21 +23,24 @@
   \
   \
   \
+  \
   = Project Report
   == COP 2080 \ Florida Polytechnic University \ Fall 2024
   \
   \
   \
+  \
   *_submitted by_*: \
   _Group 12_ \
-  Jared Wallace - Applied mathematics student \
-  Chris Lawrence - Cybersecurity student
+  Chris Lawrence - Cybersecurity student \
+  Jared Wallace - Applied mathematics student
+  \
   \
   \
   \
   *_submitted to_*: \
   Christian Navarro \
-  December 1#super("st"), 2024
+  December 3#super("rd"), 2024
 
   #pagebreak()
 ]
@@ -91,12 +94,36 @@ From the perspective of designing and developing the SPIDAM platform, limitation
 = Agile User Stories
 - *Epic 1*: As a user of SPIDAM, I want a program written for my purposes so that I can remain focused on my expertise.
   - *User story 1*: As a user of SPIDAM, I want to be able to analyze my data without needing to write nor understand Python libraries and code, so that I can focus on my job and not the tools beneath it.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
   - *User story 2*: As a user of SPIDAM, I want an intuitive user interface, so that I can maintain my focus on analyzing acoustic data rather than experimenting or browsing documentation.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
   - *User story 3*: As a user of SPIDAM, I want a well-tested program, so that a faulty analysis doesn't cause downstream issues.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
 - *Epic 2*: As a developer of SPIDAM, I want to focus on development tasks so that I can use my limited time to develop a better product.
   - *User story 1*: As a developer of SPIDAM, I want to be able to come back to my code and understand it, so that I spend as much time as possible writing code.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
   - *User story 2*: As a developer of SPIDAM, I want to be able to hand off tasks and quickly on-board new maintainers so that the development of SPIDAM can leverage a team effort to get more done.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
   - *User story 3*: As a developer of SPIDAM, I want expressive and robust units of code, so that I have the ability to quickly test, add new features, and reproduce results without spending time rewriting foundational code.
+    - *Task 1*: \
+      ...
+    - *Task 2*: \
+      ...
 
 // State the location of your audio recording. Show a wide image that includes the space recorded such as a room or hall, and the person creating the clap. State the numberical output from your measurements and show screenshots of all plots, tables, etc.
 = Results
@@ -106,110 +133,79 @@ From the perspective of designing and developing the SPIDAM platform, limitation
   We conducted our audio recording in the Aula Magna auditorium on campus, an enclosed space known for its long reverberation times. A wide-angle photograph of the auditorium was taken, showing the seating area, stage, and the person performing the hand clap at a distance of 3 meters from the recording device placed at the center aisle. The analysis of the recorded audio sample yielded an overall RT60 value of 1.8 seconds. The RT60 values across the frequency ranges were as follows: low frequencies (20 Hz – 500 Hz) had an RT60 of 2.1 seconds, mid frequencies (500 Hz – 2 kHz) had an RT60 of 1.7 seconds, and high frequencies (2 kHz – 20 kHz) had an RT60 of 1.4 seconds. The frequency with the greatest amplitude was identified at 315 Hz, indicating a significant resonance in the low-frequency range. Screenshots of the waveform plot, RT60 plots for each frequency range, and an overlapping plot of RT60 values were generated and included in the results.
 ]
 ...
-
 #figure(
-  image("clap.png"),
+  image("Picture1.png", width: 50%),
   caption: [
     The audio recording, consisting of a clap with reverberations, took place in the Aula Magna room in the Innovation, Science, and Technology building on the Florida Polytechnic campus.
+  ]
+)
+#figure(
+  image("waveform.png", width: 70%),
+  caption: [
+    The waveform graph of the `clap.wav` audio used. A time of 6.66s and a highest resonant frequency of 18.01 Hz are visible in the information panel of the waveform graph.
+  ]
+)
+#figure(
+  image("all.png", width: 70%),
+  caption: [
+    The graphics for the RT60 graphs. _Upper left_: low frequencies. _Upper Right_: medium frequencies. _Lower left_: high frequencies. _Lower right_: all frequencies.
   ]
 )
 
 // This section should describe how you tested your final product and your results. Did your product meet the design objectives and specifications? If they did great, if they didn't, why?
 = Final Product Testing
 // Paragraph 1:
-#chatgpt_go_by()[
-  To test our final product, we conducted a series of functional and performance tests. We verified the application's ability to load audio files in both WAV and MP3 formats, ensuring that non-WAV files were correctly converted. We tested the metadata removal and multi-channel handling features using audio files with varying properties. The data analysis functions were validated by comparing computed RT60 values with expected results from sample data. The GUI was tested for usability, ensuring all buttons and plots functioned as intended. Our product met the design objectives and specifications, successfully measuring and analyzing RT60 values across the specified frequency ranges and providing the required visualizations and textual outputs. Any minor discrepancies were addressed through iterative debugging and refinement.
-]
-...
-
+To test our project, we used multiple audio file formats, with or without metadata. We also interacted with the GUI to ensure functionality and modified code appropriately when problems occurred. Our product met most of the design objectives and specification, but it lacked the ability to analyze lower frequency ranges. We did not have the budget or schedule to investigate why this issue occurs, but our solution was to limit the lower range to having a higher minimum. In addition, for long audio clips tested, the loading time is relatively long. Without any responsiveness during the loading times, this has a particularly annoying issue for the user who may be perplexed about whether to restart the program, or wait for the loading to finish.
 // Summarize your team's efforts and results of this project.
 = Conclusions and Project Summary
 // Paragraph 1: Short summary of John A. Doe's contributions and how they resulted in project deliverables.
-#chatgpt_go_by()[
-  John A. Doe contributed significantly to the development of the data analysis and modeling components of the project. He was responsible for implementing the RT60 calculation algorithms using Python libraries such as SciPy and LibROSA. His work ensured accurate measurement of reverberation times across the frequency ranges. John also developed the data visualization modules, creating plots for the waveform and RT60 values. His contributions were critical in producing the analytical and graphical outputs required for the project deliverables.
-]
-...
+As the primary developer for the SPIDAM project, Chris Lawrence was responsible for the primary deliverable zip folder of the actual program. Chris created the model, view, controller, and main classes for the program, and these modules are critical in allowing the program to function. Most of Chris's research into Python functions and classes allowed for each of the modules to be developed, and was the basis behind primarily the model and view classes
 
 // Paragraph 2: Short summary of John B. Doe's contributions and how they resulted in project deliverables.
-#chatgpt_go_by()[
-  John B. Doe focused on the development of the graphical user interface and the overall application structure following the Model-View-Controller (MVC) design pattern. He designed the GUI using Tkinter, ensuring it was intuitive and met all functional requirements. John also handled the data cleaning processes, including audio format conversion, metadata removal, and multi-channel processing. His efforts in organizing the codebase and implementing version control with GitHub were essential for team collaboration and project management, resulting in a well-structured and user-friendly application.
-]
-...
+As the project manager for the SPIDAM project, 
+
 
 // This section should have a table with a percentage for each group members contribution.
 == Individual Contribution Table
 // Paragraph 1: reference the table
-#chatgpt_go_by()[
-  
-]
-...
+#figure(
+  table(
+    columns: 2,
+    [Team Member], [Contribution],
+    [1. Chris Lawrence], [50%],
+    [2. Jared Wallace], [50%]
+  ),
+  caption: "Individual contributions per person in SPIDAM Group 12."
+)
 
-// Each group member should write a 1-2 paragraph individual contribution section to discuss what you contributed
+
 == Individual Contribution Reports
 
-=== John A. Doe Account of Individual Contributions
-// Paragraph 1: What you contributed category 2
-#chatgpt_go_by()[
-  I was primarily responsible for implementing the acoustic data analysis and modeling components of the project. I developed algorithms for calculating RT60 values using the Schroeder integral method and ensured accurate computations across the low, mid, and high-frequency ranges. Utilizing libraries such as SciPy and LibROSA, I processed the audio signals and performed the necessary signal processing tasks.
-]
-...
+=== Chris Lawrence's Account of Individual Contributions
+As the primary programmer for the SPIDAM project, I was in charge of the design and creation of most of the coding and programming. Overall, my job was researching Python functions and classes and using them in order to produce the graphs as seen in the project. Most of the debugging and design decisions found in the source code were my contribution to the project, including the creation of the GUI, and the creation of the graphs it produces. However, while I was in charge of most of the coding, Jared was vital in producing the audio converter so multiple audio file types could be used.
 
-// Paragraph 2: What you contributed category 2
-#chatgpt_go_by()[
-  In addition to the analytical computations, I focused on creating the data visualization elements of the application. I designed and implemented plotting functions using Matplotlib, generating visual representations of the audio waveform and RT60 values. These visualizations were integrated into the GUI, enhancing the user's ability to interpret the results. My contributions were instrumental in delivering the core analytical functionality of the SPIDAM application.
-]
-...
-
-=== John B. Doe's Account of Individual Contributions
-// Paragraph 1: What you contributed category 2
-#chatgpt_go_by()[
-  I was primarily responsible for designing and developing the graphical user interface (GUI) of the SPIDAM application. Using Tkinter, I created an intuitive and user-friendly interface that met all functional requirements, including buttons for loading files, displaying plots, and presenting textual outputs. I ensured that the GUI followed the Model-View-Controller (MVC) design pattern for efficient code organization.
-]
-...
-
-// Paragraph 2: What you contributed category 2
-#chatgpt_go_by()[
-  I also handled the data cleaning processes required before analysis. This included implementing functions to convert audio files from MP3 to WAV format, remove metadata, and handle multi-channel audio by converting it to a single channel when necessary. Furthermore, I managed the project's version control system using Git and GitHub, coordinating the branching and merging processes to facilitate team collaboration. My contributions were essential in providing a seamless user experience and maintaining the project's structural integrity.
-]
-...
+=== Jared Wallace's Account of Individual Contributions
+I was responsible for initiating tasks and organizing meetings. In addition, I set up the report outline and managed the report commits and reminders as the project developed. In terms of coding, I contributed to planning the code architecture and programming the Python components related to the functional requirements of loading and cleaning the audio data file. As the codebase matured, I made sure that the code followed, albeit loosely, Python style guidance, particularly the Google Python Style Guide.
 
 // Each group member should write a 2-3 paragraph reflection report from each member. What did you learn from this project? What worked well? What was most challenging?
 == Individual Reflection Reports
 
-=== Chris Lawrence Reflection Report
+=== Chris Lawrence's Reflection Report
 // Paragraph 1: What did you learn from this project?
-#chatgpt_go_by()[
-  As a first time developer of MVC design, using this design allowed me to be more concise and structure my work more appropriately. When adding new features, it became clearer where certain pieces of code should go and updating old code became easier. Other than learning about MVC format, simply having more hands on experience and practice with Python was certainly the most important part of my learning experience. As someone who only uses Python for small assignments or short tasks, using Python for a project such as this allows me to combine all the knowledge I have collected up to this point. Overall, this project was great for improving my effectiveness with Python
-]
-...
+As a first time developer of MVC design, using this design allowed me to be more concise and structure my work more appropriately. When adding new features, it became clearer where certain pieces of code should go and updating old code became easier. Other than learning about MVC format, simply having more hands on experience and practice with Python was certainly the most important part of my learning experience. As someone who only uses Python for small assignments or short tasks, using Python for a project such as this allows me to combine all the knowledge I have collected up to this point. Overall, this project was great for improving my effectiveness with Python
 
 // Paragraph 2: What worked well?
-#chatgpt_go_by()[
-  During this project, Jared took over most of the adminstrative task. He developed much of the report, the scrum board, and was the primary leader for the project, while I was primarily involved with the development of the SPIDAM modules. This allowed me to stay focused on one large task, while he was focused on delivering much of the smaller parts of the project while also keeping both of us focused and organized. Other than that, using the model-view-controller format for the coding part of the project worked great, as it kept the code organized and neat
-]
-...
+During this project, Jared took over most of the administrative task. He developed much of the report, the scrum board, and was the primary leader for the project, while I was primarily involved with the development of the SPIDAM modules. This allowed me to stay focused on one large task, while he was focused on delivering much of the smaller parts of the project while also keeping both of us focused and organized. Other than that, using the model-view-controller format for the coding part of the project worked great, as it kept the code organized and neat
 
 // Paragraph 3: What was most challenging?
-#chatgpt_go_by()[
-  The most challenging part of the code was completing the model class. This class was composed of all of the actual math and audio manipulations that required previous knowledge of sound and audio sampling to function. While I have actually worked on manipulating audio signals in python for a previous class, this was signficantly more advanced, and required way more research into actually making the code work. Other than the model class, using git commands and Tkinter are still fresh to me and not something commonly used for other coding projects I have done. Due to this, mastering these skills was certainly a task for me
-]
-...
+The most challenging part of the code was completing the model class. This class was composed of all of the actual math and audio manipulations that required previous knowledge of sound and audio sampling to function. While I have actually worked on manipulating audio signals in Python for a previous class, this was significantly more advanced, and required way more research into actually making the code work. Other than the model class, using git commands and Tkinter are still fresh to me and not something commonly used for other coding projects I have done. Due to this, mastering these skills was certainly a task for me.
 
-=== John B. Doe Reflection Report
+=== Jared Wallace's Reflection Report
 // Paragraph 1: What did you learn from this project?
-#chatgpt_go_by()[
-  Participating in the SPIDAM project allowed me to enhance my skills in GUI development and software architecture. I gained a deeper appreciation for the importance of user experience in software applications. Designing an interface that is both functional and intuitive required careful consideration of user interactions and feedback mechanisms.
-]
-...
+What I learned most from this project is how complex collaboration is for creating even a small Python program. I learned that there are infinitely many ways to do things, and that's not even considering the many ways to quantify the pros and cons thereof, or even how to quantify them for that matter; and, the fact that code is not just a deliverable but also a way to enhance communication with the rest of the team doesn't simplify things much. I think the corresponding lesson to the former is that next time I work on a similar project, I will start getting progress on deliverables earlier and not try to learn _everything_ before putting _anything_ into practice. 
 
 // Paragraph 2: What worked well?
-#chatgpt_go_by()[
-  Our team's effective use of version control and adherence to coding standards contributed significantly to the project's success. The MVC design pattern facilitated clear separation of concerns, making the codebase more maintainable and scalable. Collaborating closely with John A. Doe on integrating the data analysis components into the GUI was a highlight of the project.
-]
-...
-
 // Paragraph 3: What was most challenging?
-#chatgpt_go_by()[
-  The most challenging aspect was ensuring compatibility across different systems and handling various audio file formats and properties. Implementing robust error handling and data validation required meticulous attention to detail. This project taught me the value of thorough testing and the importance of anticipating user needs and potential issues. Overall, it was a valuable learning experience in software development and team collaboration.
-]
-...
+Too many pieces of the project needed to fit together before it was, more or less, obvious what to do next, and by that time the prior work had already been done, the next task was to be started. Like the previously stated lesson implies, what worked well was to stop thinking about how the pieces fit together, and just start somewhere. This was also the most challenging thing to do, since in other group projects I have participated in the opposite was true; planning until the end was the strategy that worked. In conclusion, I am glad that I learned some hard lessons on a small project, and not on a larger project.
+
+
